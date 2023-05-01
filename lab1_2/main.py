@@ -104,57 +104,38 @@ def timezone_m(now):
     return now + datetime.timedelta(hours=12)
 
 
+timezones = {'y': timezone_y,
+             'x': timezone_x,
+             'w': timezone_w,
+             'v': timezone_v,
+             'u': timezone_u,
+             't': timezone_t,
+             's': timezone_s,
+             'r': timezone_r,
+             'q': timezone_q,
+             'p': timezone_p,
+             'o': timezone_o,
+             'n': timezone_n,
+             'z': timezone_z,
+             'a': timezone_a,
+             'b': timezone_b,
+             'c': timezone_c,
+             'd': timezone_d,
+             'e': timezone_e,
+             'f': timezone_f,
+             'g': timezone_g,
+             'h': timezone_h,
+             'i': timezone_i,
+             'k': timezone_k,
+             'l': timezone_l,
+             'm': timezone_m,
+             }
+
+
 def get_timezone(timezone, now):
-    if timezone == 'y':
-        return timezone_y(now)
-    if timezone == 'x':
-        return timezone_x(now)
-    if timezone == 'w':
-        return timezone_w(now)
-    if timezone == 'v':
-        return timezone_v(now)
-    if timezone == 'u':
-        return timezone_u(now)
-    if timezone == 't':
-        return timezone_t(now)
-    if timezone == 's':
-        return timezone_s(now)
-    if timezone == 'r':
-        return timezone_r(now)
-    if timezone == 'q':
-        return timezone_q(now)
-    if timezone == 'p':
-        return timezone_p(now)
-    if timezone == 'o':
-        return timezone_o(now)
-    if timezone == 'n':
-        return timezone_n(now)
-    if timezone == 'z':
-        return timezone_z(now)
-    if timezone == 'a':
-        return timezone_a(now)
-    if timezone == 'b':
-        return timezone_b(now)
-    if timezone == 'c':
-        return timezone_c(now)
-    if timezone == 'd':
-        return timezone_d(now)
-    if timezone == 'e':
-        return timezone_e(now)
-    if timezone == 'f':
-        return timezone_f(now)
-    if timezone == 'g':
-        return timezone_g(now)
-    if timezone == 'h':
-        return timezone_h(now)
-    if timezone == 'i':
-        return timezone_i(now)
-    if timezone == 'k':
-        return timezone_k(now)
-    if timezone == 'l':
-        return timezone_l(now)
-    if timezone == 'm':
-        return timezone_m(now)
+    if timezone not in timezones:
+        raise NotImplemented()
+    return timezones[timezone](now)
 
 
 if __name__ == '__main__':
