@@ -12,12 +12,5 @@ def is_primary(n):
     return True
 
 
-def next_primary(num):
-    prim = num
-    while not is_primary(prim):
-        prim = prim + 1
-    return prim
-
-
 if __name__ == '__main__':
-    print (next_primary(100))
+    print(is_primary(13))

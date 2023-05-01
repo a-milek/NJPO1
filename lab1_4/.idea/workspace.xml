@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="eb080347-1074-404f-b805-23f7a4ede5a4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../lab1_3/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1_3/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +28,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/anna_v58k395/OneDrive/Dokumenty/GitHub/NJPO1/lab1_4"
   }
 }]]></component>
   <component name="RunManager">

@@ -3,6 +3,7 @@
 # Uśrednienie ma nastąpić 1m razy (milion razy).
 import random
 
+
 def wartosc_oczekiwana():
     n = 1000000
     suma = 0
