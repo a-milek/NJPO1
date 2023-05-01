@@ -8,4 +8,4 @@ def fibonacci(num):
 
 
 if __name__ == '__main__':
-    print(int(fibonacci(16)))
+    print(int(fibonacci(93)))
