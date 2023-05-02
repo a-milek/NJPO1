@@ -12,5 +12,13 @@ def is_primary(n):
     return True
 
 
+def primary_numbers(a, b):
+    primaries = []
+    for x in range(a, b):
+        if is_primary(x):
+            primaries.append(x)
+    return primaries
+
+
 if __name__ == '__main__':
-    print(is_primary(13))
+    print(primary_numbers(2, 100))
