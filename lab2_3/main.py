@@ -20,6 +20,7 @@ def import_collection(file_name):
     return collection
 
 
+# not sure about the statistics, mixed signals(again) from the lecture and from the exercise itself
 def statistics(value, collection):
     count = 0
     for book in collection:
