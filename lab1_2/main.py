@@ -34,12 +34,12 @@ timezones = {'y': -12.0,
 # Verify if zone is in the timezones
 def check_if_valid_zone(zone):
     if zone not in timezones:
-        return False
+        return 0
 
 
 # Calculate timezone time
 def get_time_in_zone(zone):
-    if check_if_valid_zone(zone):
+    if check_if_valid_zone(zone) != 0:
         offset = datetime.timedelta(hours=timezones[zone])
         return (get_time_now() + offset).strftime("%H:%M:%S")
     else:
