@@ -31,6 +31,12 @@ timezones = {'y': -12.0,
              }
 
 
+# Verify if zone is in the timezones
+def check_if_valid_zone(zone):
+    if zone not in timezones:
+        return False
+
+
 def get_timezone(timezone, now):
     if timezone not in timezones:
         raise NotImplemented()
