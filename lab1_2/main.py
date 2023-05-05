@@ -50,12 +50,6 @@ def get_time_now():
     return datetime.datetime.utcnow()
 
 
-def get_timezone(timezone, now):
-    if timezone not in timezones:
-        raise NotImplemented()
-    return timezones[timezone](now)
-
-
 # Test for different timezones
 if __name__ == '__main__':
     # Correct timezone
