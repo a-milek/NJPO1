@@ -37,6 +37,10 @@ def check_if_valid_zone(zone):
         return False
 
 
+def get_time_now():
+    return datetime.datetime.utcnow()
+
+
 def get_timezone(timezone, now):
     if timezone not in timezones:
         raise NotImplemented()
