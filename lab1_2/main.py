@@ -56,7 +56,16 @@ def get_timezone(timezone, now):
     return timezones[timezone](now)
 
 
+# Test for different timezones
 if __name__ == '__main__':
-    time_now = datetime.datetime.utcnow()
-    print("Greenwich time: ", time_now)
-    print("Polish time: ", get_timezone("b", time_now))
+    # Correct timezone
+    print('Current time in GMT:', get_time_in_zone('z'))
+    print('Current time in EST:', get_time_in_zone('r'))
+    print('Current time in CST:', get_time_in_zone('s'))
+    print('Current time in MST:', get_time_in_zone('t'))
+    print('Current time in PST:', get_time_in_zone('u'))
+
+    # Incorrect timezones
+    print('Current time in incorrect timezone:', get_time_in_zone('nm'))
+    print('Current time in incorrect timezone:', get_time_in_zone('1'))
+    print('Current time in incorrect timezone:', get_time_in_zone('!'))
