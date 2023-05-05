@@ -37,6 +37,15 @@ def check_if_valid_zone(zone):
         return False
 
 
+# Calculate timezone time
+def get_time_in_zone(zone):
+    if check_if_valid_zone(zone):
+        offset = datetime.timedelta(hours=timezones[zone])
+        return (get_time_now() + offset).strftime("%H:%M:%S")
+    else:
+        return "No such timezone exists"
+
+
 def get_time_now():
     return datetime.datetime.utcnow()
 
