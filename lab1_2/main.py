@@ -3,142 +3,63 @@
 # Do zadania wystarczy utworzyć słownik z przesunięciami czasowymi z i od i *UTC*.
 import datetime
 
-
-def timezone_y(now):
-    return now - datetime.timedelta(hours=12)
-
-
-def timezone_x(now):
-    return now - datetime.timedelta(hours=11)
-
-
-def timezone_w(now):
-    return now - datetime.timedelta(hours=10)
-
-
-def timezone_v(now):
-    return now - datetime.timedelta(hours=9)
-
-
-def timezone_u(now):
-    return now - datetime.timedelta(hours=8)
-
-
-def timezone_t(now):
-    return now - datetime.timedelta(hours=7)
-
-
-def timezone_s(now):
-    return now - datetime.timedelta(hours=6)
-
-
-def timezone_r(now):
-    return now - datetime.timedelta(hours=5)
-
-
-def timezone_q(now):
-    return now - datetime.timedelta(hours=4)
-
-
-def timezone_p(now):
-    return now - datetime.timedelta(hours=3)
-
-
-def timezone_o(now):
-    return now - datetime.timedelta(hours=2)
-
-
-def timezone_n(now):
-    return now - datetime.timedelta(hours=1)
-
-
-def timezone_z(now):
-    return now
-
-
-def timezone_a(now):
-    return now + datetime.timedelta(hours=1)
-
-
-def timezone_b(now):
-    return now + datetime.timedelta(hours=2)
-
-
-def timezone_c(now):
-    return now + datetime.timedelta(hours=3)
-
-
-def timezone_d(now):
-    return now + datetime.timedelta(hours=4)
-
-
-def timezone_e(now):
-    return now + datetime.timedelta(hours=5)
-
-
-def timezone_f(now):
-    return now + datetime.timedelta(hours=6)
-
-
-def timezone_g(now):
-    return now + datetime.timedelta(hours=7)
-
-
-def timezone_h(now):
-    return now + datetime.timedelta(hours=8)
-
-
-def timezone_i(now):
-    return now + datetime.timedelta(hours=9)
-
-
-def timezone_k(now):
-    return now + datetime.timedelta(hours=10)
-
-
-def timezone_l(now):
-    return now + datetime.timedelta(hours=11)
-
-
-def timezone_m(now):
-    return now + datetime.timedelta(hours=12)
-
-
-timezones = {'y': timezone_y,
-             'x': timezone_x,
-             'w': timezone_w,
-             'v': timezone_v,
-             'u': timezone_u,
-             't': timezone_t,
-             's': timezone_s,
-             'r': timezone_r,
-             'q': timezone_q,
-             'p': timezone_p,
-             'o': timezone_o,
-             'n': timezone_n,
-             'z': timezone_z,
-             'a': timezone_a,
-             'b': timezone_b,
-             'c': timezone_c,
-             'd': timezone_d,
-             'e': timezone_e,
-             'f': timezone_f,
-             'g': timezone_g,
-             'h': timezone_h,
-             'i': timezone_i,
-             'k': timezone_k,
-             'l': timezone_l,
-             'm': timezone_m,
+timezones = {'y': -12.0,
+             'x': -11.0,
+             'w': -10.0,
+             'v': -9.0,
+             'u': -8.0,
+             't': -7.0,
+             's': -6.0,
+             'r': -5.0,
+             'q': -4.0,
+             'p': -3.0,
+             'o': -2.0,
+             'n': -1.0,
+             'z': 0.0,
+             'a': 1.0,
+             'b': 2.0,
+             'c': 3.0,
+             'd': 4.0,
+             'e': 5.0,
+             'f': 6.0,
+             'g': 7.0,
+             'h': 8.0,
+             'i': 9.0,
+             'k': 10.0,
+             'l': 11.0,
+             'm': 12.0,
              }
 
 
-def get_timezone(timezone, now):
-    if timezone not in timezones:
-        raise NotImplemented()
-    return timezones[timezone](now)
+# Verify if zone is in the timezones
+def check_if_valid_zone(zone):
+    if zone not in timezones:
+        return 0
 
 
+# Calculate timezone time
+def get_time_in_zone(zone):
+    if check_if_valid_zone(zone) != 0:
+        offset = datetime.timedelta(hours=timezones[zone])
+        return (get_time_now() + offset).strftime("%H:%M:%S")
+    else:
+        return "No such timezone exists"
+
+
+def get_time_now():
+    return datetime.datetime.utcnow()
+
+
+# Test for different timezones
 if __name__ == '__main__':
-    time_now = datetime.datetime.utcnow()
-    print("Greenwich time: ", time_now)
-    print("Polish time: ", get_timezone("b", time_now))
+    # Correct timezone
+    print('Current time in GMT:', get_time_in_zone('z'))
+    print('Current time in EST:', get_time_in_zone('r'))
+    print('Current time in CST:', get_time_in_zone('s'))
+    print('Current time in MST:', get_time_in_zone('t'))
+    print('Current time in PST:', get_time_in_zone('u'))
+
+    # Incorrect timezones
+    print('Current time in incorrect timezone:', get_time_in_zone('nm'))
+    print('Current time in incorrect timezone:', get_time_in_zone('1'))
+    print('Current time in incorrect timezone:', get_time_in_zone('!'))
