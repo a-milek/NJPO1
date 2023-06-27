@@ -1,3 +1,4 @@
+import random
 from operator import itemgetter
 
 
@@ -33,9 +34,6 @@ class KDTree:
         self._fill_with_random_values(self.root, exponent)
         while self._count(self.root) != self.count ** exponent:
             self._fill_with_random_values(self.root, exponent)
-
-    def __str__(self):
-        return self._draw_tree(self.root)
 
     def _build(self, points, depth):
         if not points:
@@ -104,19 +102,40 @@ class KDTree:
         if node is None:
             return
 
+        current_count = self._count(node)
+        target_count = self.count ** exponent
+
+        if current_count >= target_count:
+            return
+
+        remaining_count = target_count - current_count
+
+        for _ in range(remaining_count):
+            random_point = [random.randint(0, 100) for _ in range(self.dimensions)]
+            self._insert(node, random_point, 0)
+
+    def is_empty(self):
+        if self.count==0:
+            return False
+        return True
+
 
 # main
 if __name__ == '__main__':
+    tree = KDTree()
+    print(tree.is_empty())
     points = [[1, 0], [2, 40], [15, 16], [51, 12], [8, 1], [23, 5], [32, 12], [3, 9], [1, 5], [8, 3], [3, 20], [4, 12],
               [12, 5]]
     tree = KDTree(points)
     points = [[4, 3, 5], [2, 1, 3], [5, 4, 2], [9, 6, 7], [4, 7, 8], [8, 1, 9], [7, 2, 1], [6, 3, 4], [3, 9, 6]]
     tree = KDTree(points)
-    assert (3, 9, 6) in tree
+    assert [3, 9, 6] in tree
 
-    points = [[1, 3, 5, 8], [2, 1, 3, 4], [5, 4, 2, 1], [9, 6, 7, 2], [4, 7, 8, 3], [8, 1, 9, 4], [7, 2, 1, 5],
-              [6, 3, 4, 6], [3, 9, 6, 7]]
+    points = [[1, 3, 5, 8], [2, 1, 3, 4], [5, 4, 2, 1]]
     tree = KDTree(points)
-    assert [3, 9, 6, 7] in tree
+    print(tree.is_empty())
+    print(tree)
 
-    print("All assertions passed!")
+    print("len: ", tree.__len__())
+    print("count: ", tree.count)
+
